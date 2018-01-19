@@ -16,13 +16,14 @@ export function setItems(payload) {
   };
 }
 
-export function itemClick(section, idx, price) {
+export function itemClick(section, idx, price, calorie) {
   return {
     type: ITEM_CLICK,
     payload: {
       section,
       idx,
       price,
+      calorie,
     },
   };
 }

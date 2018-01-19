@@ -13,13 +13,14 @@ async function getMenu({ day, month, year }) {
     include: [{
       model: db.Dish,
       through: { attributes: ['complex'] },
-      attributes: ['id', 'name', 'type', 'price'],
+      attributes: ['id', 'name', 'type', 'price', 'calorie'],
     }],
   });
   return data.map((dish) => ({
     id: dish.id,
     name: dish.name,
     price: dish.price,
+    calorie: dish.calorie,
     type: dish.type,
     complex: dish.MenuDish.complex,
   }));

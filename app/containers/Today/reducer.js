@@ -14,6 +14,7 @@ const initialState = new Map({
   items: new Map(),
   selected: new Set(),
   sum: 0,
+  calsum: 0,
 });
 
 function checkSelection(selected, item) {
@@ -26,9 +27,13 @@ function calculateSum(selected) {
   return selected.reduce((ac, item) => ac + item.get('price'), 0);
 }
 
+function calculateCalorieSum(selected) {
+  return selected.reduce((ac, item) => ac + item.get('calorie'), 0);
+}
+
 function onItemClick(state, item) {
   const subresult = state.update('selected', (v) => checkSelection(v, fromJS(item)));
-  return subresult.set('sum', calculateSum(subresult.get('selected')));
+  return subresult.set('sum', calculateSum(subresult.get('selected'))).set('calsum', calculateCalorieSum(subresult.get('selected')));
 }
 
 function updateOnItems(state, arr) {

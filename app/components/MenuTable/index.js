@@ -69,12 +69,14 @@ function buildEntries(items, selected, itemClick) {
 function Entry(section, selected, entry, idx, itemClick) {
   const complex = entry.get('complex');
   const price = entry.get('price');
+  const calorie = entry.get('calorie') || "";
   const name = entry.get('name');
-  const added = selected.includes(fromJS({ section, idx, price }));
+  const added = selected.includes(fromJS({ section, idx, price, calorie }));
   return (
-    <Tr key={`${section}${idx}`} onClick={() => itemClick(section, idx, price)}>
+    <Tr key={`${section}${idx}`} onClick={() => itemClick(section, idx, price, calorie)}>
       <Td>{added ? '✓' : ''}</Td>
       <Td><Name complex={complex}>{name}</Name></Td>
+      <Td>{calorie}</Td>
       <Td>{price}</Td>
     </Tr>
   );
@@ -83,7 +85,7 @@ function Entry(section, selected, entry, idx, itemClick) {
 function Section(section) {
   return (
     <Tr key={section} className="info">
-      <TdSection colSpan="3">{section}</TdSection>
+      <TdSection colSpan="4">{section}</TdSection>
     </Tr>
   );
 }
@@ -104,6 +106,7 @@ class MenuTable extends PureComponent { // eslint-disable-line react/prefer-stat
           <Tr>
             <Th />
             <Th><FormattedMessage {...messages.name} /></Th>
+            <Th><FormattedMessage {...messages.calorie} /></Th>
             <Th><FormattedMessage {...messages.price} /></Th>
           </Tr>
         </thead>

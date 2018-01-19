@@ -8,7 +8,7 @@ import styled from 'styled-components';
 import MenuTable from 'components/MenuTable';
 import Calculator from 'components/Calculator';
 
-import { makeSelectMenuItems, makeSelectMenuPick, makeSelectMenuSum } from './selectors';
+import { makeSelectMenuItems, makeSelectMenuPick, makeSelectMenuSum, makeSelectMenuCalorieSum } from './selectors';
 import * as actions from './actions';
 
 const Container = styled.div`
@@ -41,6 +41,7 @@ export class Today extends React.Component { // eslint-disable-line react/prefer
       selected,
       itemClick,
       sum,
+      calsum,
     } = this.props;
 
     return (
@@ -55,7 +56,7 @@ export class Today extends React.Component { // eslint-disable-line react/prefer
           <MenuTable items={items} selected={selected} itemClick={itemClick} />
         </Main>
         <Footer>
-          <Calculator sum={sum} />
+          <Calculator sum={sum} calsum={calsum} />
         </Footer>
       </Container>
     );
@@ -67,12 +68,14 @@ Today.propTypes = {
   items: PropTypes.object.isRequired,
   selected: PropTypes.object.isRequired,
   sum: PropTypes.number.isRequired,
+  calsum: PropTypes.number.isRequired,
 };
 
 const mapStateToProps = createStructuredSelector({
   items: makeSelectMenuItems(),
   selected: makeSelectMenuPick(),
   sum: makeSelectMenuSum(),
+  calsum: makeSelectMenuCalorieSum(),
 });
 
 export default connect(mapStateToProps, actions)(Today);

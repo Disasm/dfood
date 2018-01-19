@@ -31,9 +31,11 @@ function extractData($) {
     $('ul.menu-filter_content > li', section).each((i, el) => {
       const complex = $('img[src*="blackberry"]', el).length === 1;
       const price = parseInt($('li.price', el).text(), 10);
+      const calorie = parseInt($("ul.menu-item_desc__list > li", el).eq(2).text(), 10) || 0;
       const entry = {
         name: $('strong', el).text().trim(),
         price,
+        calorie,
         complex,
       };
       result[title].push(entry);

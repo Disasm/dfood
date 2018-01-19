@@ -10,6 +10,10 @@ export default defineMessages({
     id: 'app.components.MenuTable.name',
     defaultMessage: 'Name',
   },
+  calorie: {
+    id: 'app.components.MenuTable.calorie',
+    defaultMessage: 'Kcal',
+  },
   price: {
     id: 'app.components.MenuTable.price',
     defaultMessage: 'Price',

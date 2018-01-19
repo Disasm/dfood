@@ -23,6 +23,11 @@ const makeSelectMenuSum = () => createSelector(
   (substate) => substate.get('sum')
 );
 
+const makeSelectMenuCalorieSum = () => createSelector(
+  selectMenuDomain(),
+  (substate) => substate.get('calsum')
+);
+
 /**
  * Default selector used by Menu
  */
@@ -38,4 +43,5 @@ export {
   makeSelectMenuItems,
   makeSelectMenuPick,
   makeSelectMenuSum,
+  makeSelectMenuCalorieSum,
 };

@@ -26,6 +26,7 @@ class Calculator extends React.PureComponent { // eslint-disable-line react/pref
   render() {
     const {
       sum,
+      calsum,
     } = this.props;
 
     if (sum === 0) {
@@ -34,7 +35,7 @@ class Calculator extends React.PureComponent { // eslint-disable-line react/pref
 
     return (
       <PriceDisplay>
-        <FormattedMessage {...messages.total} />{this.props.sum}
+        <FormattedMessage {...messages.total} />{this.props.calsum} kcal, {this.props.sum}
       </PriceDisplay>
     );
   }
@@ -42,6 +43,7 @@ class Calculator extends React.PureComponent { // eslint-disable-line react/pref
 
 Calculator.propTypes = {
   sum: PropTypes.number.isRequired,
+  calsum: PropTypes.number.isRequired,
 };
 
 export default Calculator;

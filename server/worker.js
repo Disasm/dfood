@@ -43,12 +43,18 @@ async function getDish(dish, type) {
     maybeDish = await db.Dish.create({
       name: dish.name,
       price: dish.price,
+      calorie: dish.calorie,
       type,
     });
   }
   if (maybeDish.price !== dish.price) {
     await maybeDish.update({
       price: dish.price,
+    });
+  }
+  if (maybeDish.calorie !== dish.calorie) {
+    await maybeDish.update({
+      calorie: dish.calorie,
     });
   }
   return {
